@@ -33,13 +33,14 @@ public class DialogueView : DialogueViewBase
     [SerializeField] TMPro.TextMeshProUGUI text;
 
     // The game object that should animate in and out.
-    //控制动画吧，应该用不到
-    [SerializeField] RectTransform container;
+    //控制动画
+    //[SerializeField] RectTransform container;
 
     // If this is true, then the line view will not automatically report that
     // it's done showing a line, and will instead wait for InterruptLine to be
     // called (which happens when UserRequestedViewAdvancement is called.)
     [SerializeField] private bool waitForInput;
+    [SerializeField] internal GameObject continueButton = null;
 
     // The current coroutine that's playing out a scaling animation. When this
     // is not null, we're in the middle of an animation.
@@ -51,20 +52,20 @@ public class DialogueView : DialogueViewBase
     Action advanceHandler = null;
 
     // Sets the scale of the container view.
-    private float Scale
-    {
-        // Take the value, which is a single number, and make it scale the
-        // 'container' object by that amount on all three axes.
-        // 改了容器的scale
-        set => container.localScale = new Vector3(value, value, value);
-    }
+    //private float Scale
+    //{
+    //    // Take the value, which is a single number, and make it scale the
+    //    // 'container' object by that amount on all three axes.
+    //    // 改了容器的scale
+    //    //set => container.localScale = new Vector3(value, value, value);
+    //}
 
     // Called on the first frame that this object is active.
     public void Start()
     {
         // On start, we'll hide the line view by setting the scale to zero
         // 应该是设置整个动画展示的尺寸，然后开始时不显示
-        Scale = 0;
+        //Scale = 0;
     }
 
     // RunLine receives a localized line, and is in charge of displaying it to
@@ -91,12 +92,22 @@ public class DialogueView : DialogueViewBase
 
         // Start displaying the line: set our scale to zero, and update our
         // text.
-        Scale = 0;
+        //Scale = 0;
         text.text = dialogueLine.Text.Text;
 
         // During presentation, if we get an advance signal, we'll indicate that
         // we want to interrupt.
-        advanceHandler = requestInterrupt;
+        if(waitForInput)
+        {
+            //点击后出现下一句
+            advanceHandler = requestInterrupt;
+
+        } else
+        {
+            //这里是一直刷下一句的原因
+            advanceHandler = null;
+            onDialogueLineFinished();
+        }
 
         // Animate from zero to full scale, over the course of appearanceTime.
         //currentAnimation = this.Tween(
@@ -134,6 +145,46 @@ public class DialogueView : DialogueViewBase
         //    );
     }
 
+    public void OnContinueClicked()
+    {
+        Debug.Log("continue");
+        // When the Continue button is clicked, we'll do the same thing as
+        // if we'd received a signal from any other part of the game (for
+        // example, if a DialogueAdvanceInput had signalled us.)
+        UserRequestedViewAdvancement();
+    }
+    /// <inheritdoc/>
+    public override void UserRequestedViewAdvancement()
+    {
+        // We received a request to advance the view. If we're in the middle of
+        // an animation, skip to the end of it. If we're not current in an
+        // animation, interrupt the line so we can skip to the next one.
+        requestInterrupt?.Invoke();
+        // we have no line, so the user just mashed randomly
+        //if (currentLine == null)
+        //{
+        //    return;
+        //}
+
+        //// we may want to change this later so the interrupted
+        //// animation coroutine is what actually interrupts
+        //// for now this is fine.
+        //// Is an animation running that we can stop?
+        //if (currentStopToken.CanInterrupt)
+        //{
+        //    // Stop the current animation, and skip to the end of whatever
+        //    // started it.
+        //    currentStopToken.Interrupt();
+        //}
+        //else
+        //{
+        //    // No animation is now running. Signal that we want to
+        //    // interrupt the line instead.
+        //    requestInterrupt?.Invoke();
+        //}
+    }
+
+
     // InterruptLine is called when the dialogue runner indicates that the
     // line's presentation should be interrupted. This is a 'hurry up' signal -
     // the view should finish whatever presentation it needs to do as quickly as
@@ -158,7 +209,8 @@ public class DialogueView : DialogueViewBase
         // In this case, if we get another advance signal while this is going,
         // there's nothing we can do to be faster, so we'll do nothing here.
         advanceHandler = null;
-
+        text.text = dialogueLine.Text.Text;
+        Debug.Log(dialogueLine.Text.Text);
         Debug.Log($"{this.name} was interrupted while presenting {dialogueLine.TextID}");
 
         // If we're in the middle of an animation, stop it.
@@ -169,7 +221,7 @@ public class DialogueView : DialogueViewBase
         //}
 
         // Skip to the end of the presentation by setting our scale to 100%.
-        Scale = 1f;
+        //Scale = 1f;
 
         // Indicate that we've finished presenting the line.
         onDialogueLineFinished();
@@ -182,12 +234,15 @@ public class DialogueView : DialogueViewBase
     // onDismissalComplete, the dialogue runner moves on to the next line.
     public override void DismissLine(Action onDismissalComplete)
     {
-        if (gameObject.activeInHierarchy == false)
+        //if (gameObject.activeInHierarchy == false)
+        //{
+        //    // This line view isn't active; it should immediately report that
+        //    // it's finished dismissing.
+        //    return;
+        //}
+        if (onDismissalComplete != null)
         {
-            // This line view isn't active; it should immediately report that
-            // it's finished dismissing.
             onDismissalComplete();
-            return;
         }
 
         Debug.Log($"{this.name} dismissing line");
@@ -248,16 +303,16 @@ public class DialogueView : DialogueViewBase
     // line. What 'next' means is up to your view - in this view, it means to
     // either skip the current animation, or if no animation is happening,
     // interrupt the line.
-    public override void UserRequestedViewAdvancement()
-    {
-        // We have received a signal that the user wants to proceed to the next
-        // line.
+    //public override void UserRequestedViewAdvancement()
+    //{
+    //    // We have received a signal that the user wants to proceed to the next-----
+    //    // line.
 
-        // Invoke our 'advance line' handler, which (depending on what we're
-        // currently doing) will be a signal to interrupt the line, stop the
-        // current animation, or do nothing.
-        advanceHandler?.Invoke();
-    }
+    //    // Invoke our 'advance line' handler, which (depending on what we're
+    //    // currently doing) will be a signal to interrupt the line, stop the
+    //    // current animation, or do nothing.
+    //    advanceHandler?.Invoke();
+    //}
 }
 
 // A class that adds extension methods to MonoBehaviour that allows for
