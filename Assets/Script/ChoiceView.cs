@@ -59,7 +59,8 @@ using Yarn.Unity;
             // submit an option when the Dialogue Runner isn't expecting it. To
             // prevent this, we'll only invoke this if the flag hasn't been cleared already.
             if (hasSubmittedOptionSelection == false)
-            {
+            {   
+                //此处返回的Option，在传入invoke前对Option的ID进行重新处理，来确定下一句的值
                 OnOptionSelected.Invoke(Option);
                 hasSubmittedOptionSelection = true;
             }

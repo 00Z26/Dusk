@@ -131,6 +131,7 @@ using Yarn.Unity;
             /// </summary>
             void OptionViewWasSelected(DialogueOption option)
             {
+                //此处获取了返回的ID并执行了，在choiceview返回值前，将值传到计算，再传回这里。
                 OnOptionSelected(option.DialogueOptionID);
                 foreach (var optionView in optionViews)
                 {
