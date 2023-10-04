@@ -5,5 +5,5 @@ using UnityEngine;
 public class AttributeData : ScriptableObject
 {
     public int expressionNum;
-    public int honestNum;
+    public int candorNum;
 }

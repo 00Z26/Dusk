@@ -27,8 +27,8 @@ public class CustomVariableStorage : VariableStorageBehaviour
         // delete?
         dayAttributeData.expressionNum = 0;
         nightAttributeData.expressionNum = 0;
-        dayAttributeData.honestNum = 0;
-        nightAttributeData.honestNum = 0;
+        dayAttributeData.candorNum = 0;
+        nightAttributeData.candorNum = 0;
     }
     public override bool Contains(string variableName) 
     {
