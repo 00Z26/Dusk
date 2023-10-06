@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f3ac7b43a20cf4ab61d933e12fccb3, type: 3}
+  m_Name: BranchData
+  m_EditorClassIdentifier: 
+  a6_test: 0
+  a7_desk: 0
+  a7_talk: 0
+  a8_lecture: 0
+  leader: 0
+  a9_honest: 0
+  a9_trust: 0
+  a9_mhonest: 0
+  m9_trust: 0
+  a10_confess: 0
+  a10_settle: 0
+  a10_care: 0
+  b10_confide: 0
+  contest: 0
+  a10_mconfess: 0
+  a10_msettle: 0
+  a10_mcare: 0
+  b10_mconfide: 0
+  b6_test: 0
+  b7_other: 0
+  b7_talk: 0
+  b8_lecture: 0
+  b9_honest: 0
+  b9_mhonest: 0
+  b10_confess: 0
+  b10_care: 0
+  b10_mconfess: 0
+  b10_mcare: 0
