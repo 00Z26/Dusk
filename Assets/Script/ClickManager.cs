@@ -4,17 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 
-public class ClcikManager : MonoBehaviour
+public class ClickManager : MonoBehaviour
 {
     public GameObject wishBtn;
     public GameObject dayDialogue;
     public GameObject nightDialogue;
 
+    public GameObject dice;
+    public GameObject dayDiceShow;
+    public GameObject nightDiceShow;
+
     //接下来要鉴定的属性和修改的变量
-    private string dayDiceAttr;
-    private string dayVariableName;
-    private string nightDiceAttr;
-    private string nightVariableName;
+    public string dayDiceAttr;
+    public string dayVariableName;
+    public string nightDiceAttr;
+    public string nightVariableName;
 
     [YarnCommand("wish")]
     public void ClickWish()
@@ -26,14 +30,21 @@ public class ClcikManager : MonoBehaviour
     [YarnCommand("a_roll")]
     public void GetDayDiceAttribute(string attr, string variable)
     {
+        dice.SetActive(true);
         dayDiceAttr = attr;
         dayVariableName = variable;
+        dayDialogue.GetComponent<Button>().enabled = false;
+        nightDialogue.GetComponent<Button>().enabled = false;
+        Debug.Log(dayDiceAttr);
     }
 
     [YarnCommand("b_roll")]
     public void GetNightDiceAttribute(string attr, string variable)
     {
+        dice.SetActive(true);
         nightDiceAttr = attr;
         nightVariableName = variable;
+        dayDialogue.GetComponent<Button>().enabled = false;
+        nightDialogue.GetComponent<Button>().enabled = false;
     }
 }

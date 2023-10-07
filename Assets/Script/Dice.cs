@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Dice : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Dice : MonoBehaviour
     public TextMeshProUGUI rightDiceNum;
     public TextMeshProUGUI dayDiceNum;
     public TextMeshProUGUI nightDiceNum;
+
+    public GameObject dayDialogue;
+    public GameObject nightDialogue;
 
     public CalculateManager calculateManager;
 
@@ -33,8 +37,13 @@ public class Dice : MonoBehaviour
         dayDiceNum.text = leftNum.ToString() + rightNum.ToString();
         nightDiceNum.text = rightNum.ToString() + leftNum.ToString();
 
+        calculateManager.CalculateDiceResult(dayNum,nightNum);
         //这里计算结束后同样要调用下一句
-
+        dayDiceNum.gameObject.transform.parent.gameObject.SetActive(true);
+        nightDiceNum.gameObject.transform.parent.gameObject.SetActive(true);
+        dayDialogue.GetComponent<Button>().enabled = true;
+        nightDialogue.GetComponent<Button>().enabled = true;
+        this.gameObject.SetActive(false);
     }
 
 

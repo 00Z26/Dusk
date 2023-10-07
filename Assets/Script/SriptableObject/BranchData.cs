@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 [CreateAssetMenu(fileName = "BranchData", menuName = "SO_Branch")]
 public class BranchData : ScriptableObject
 {
+    [SerializeField]
     public int a6_test;
     public int a7_desk;
     public int a7_talk;
@@ -34,12 +37,27 @@ public class BranchData : ScriptableObject
     public int b10_mconfess;
     public int b10_mcare;
 
+
     public int GetValue(string name)
     {
-        return (int)this.GetType().GetProperty(name).GetValue(this, null);
+        Type customVaribleType = Type.GetType(this.name);
+        object customAaribleObj = Activator.CreateInstance(customVaribleType);
+        FieldInfo pi = customVaribleType.GetField(name);
+
+        return (int)pi.GetValue(this);
+ 
     }
+
+    //传不带$符的name
     public void SetValue(string name,int val)
     {
-        this.GetType().GetProperty(name).SetValue(this, val);
+        //if(this.GetType().GetProperty(name) != null)
+        //{
+        Type customVaribleType = Type.GetType(this.name);
+        object customAaribleObj = Activator.CreateInstance(customVaribleType);
+        FieldInfo pi = customVaribleType.GetField(name);
+        pi.SetValue(this, val);
+        //this.GetType().GetProperty("a6_test").SetValue(this, val);
+        //}
     }
 }

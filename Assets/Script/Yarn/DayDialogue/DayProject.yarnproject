@@ -1,7 +1,7 @@
 {
   "projectFileVersion": 2,
   "sourceFiles": [
-    "**/Daytest.yarn"
+    "**/*.yarn"
   ],
   "excludeFiles": [],
   "localisation": {},

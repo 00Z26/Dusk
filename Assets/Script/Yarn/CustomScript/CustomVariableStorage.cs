@@ -94,7 +94,8 @@ public class CustomVariableStorage : VariableStorageBehaviour
     {
         //float 设置人物属性值
         SetAttributeNum(variableName,floatValue);
-        branchData.SetValue(variableName.Replace("$", ""),(int)floatValue);
+        if(this.dayAttributeData.GetAttrIndex(variableName.Substring(3, variableName.Length - 3)) == -1)
+            branchData.SetValue(variableName.Replace("$", ""),(int)floatValue);
     }
     public override void SetValue(string variableName, bool boolValue) { }
     public override void Clear() 
@@ -158,9 +159,11 @@ public class CustomVariableStorage : VariableStorageBehaviour
     }
     private void SetAttributeNum(string variableName, float val)
     {
-        string roleName = variableName.Substring(1);
+        string roleName = variableName.Substring(0,2);
+        Debug.Log(roleName);
         //int attrIndex = this.calculateManager.VariableToAttrIndex(variableName);
-        int attrIndex = this.dayAttributeData.GetAttrIndex(variableName.Substring(3, 100));
+        int attrIndex = this.dayAttributeData.GetAttrIndex(variableName.Substring(3, variableName.Length-3));
+        Debug.Log(variableName.Substring(3, variableName.Length - 3));
 
         if (attrIndex != -1)
         {
