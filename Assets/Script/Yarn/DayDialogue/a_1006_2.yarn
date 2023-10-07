@@ -13,8 +13,8 @@ position: -13,10
 <<set $a_expression to 20>>	
 昼妈意外骨折，躺家里喊昼跑腿。昼没法和夜一起玩。
 昼参加了实验小学入学考试。
-考试结果……（检定 表达）
 <<a_roll Calculate $a_expression $a6_test>>	
+考试结果……（检定 表达）
 <<if $a6_test == 1>>
     进入优等班。
 <<else>>

@@ -68,34 +68,39 @@ public class CustomVariableStorage : VariableStorageBehaviour
         }
         else if (typeof(T) == typeof(float))
         {
-            int resNum = -1;
+
+        }
+        int resNum = -1;
+        
+        // 获取剧情分支值
+        if(this.dayAttributeData.GetAttrIndex(variableName.Substring(3, variableName.Length - 3)) == -1)
+            resNum = branchData.GetValue(variableName.Replace("$", ""));
+        else
             // float值 获取人物属性
             resNum = GetAttributeNum(variableName);
-            // 获取剧情分支值
-            resNum = branchData.GetValue(variableName.Replace("$",""));
 
-            if(resNum != -1)
-            {
-                result = (T)(object)resNum;
-                return true;
-            }
-            else
-            {
-                result = default(T);
-                return false;
-            }
+
+        if (resNum != -1)
+        {
+            result = (T)(object)resNum;
+            return true;
         }
-        result = default(T);
-        return false;
+        else
+        {
+            result = default(T);
+            return false;
+        }
     }
 
     public override void SetValue(string variableName, string stringValue) { }
     public override void SetValue(string variableName, float floatValue) 
     {
-        //float 设置人物属性值
-        SetAttributeNum(variableName,floatValue);
         if(this.dayAttributeData.GetAttrIndex(variableName.Substring(3, variableName.Length - 3)) == -1)
             branchData.SetValue(variableName.Replace("$", ""),(int)floatValue);
+        else
+            //float 设置人物属性值
+            SetAttributeNum(variableName, floatValue);
+
     }
     public override void SetValue(string variableName, bool boolValue) { }
     public override void Clear() 
@@ -139,7 +144,7 @@ public class CustomVariableStorage : VariableStorageBehaviour
         int res = -1;
         //int attrIndex = this.calculateManager.VariableToAttrIndex(variableName);
 
-        int attrIndex = this.dayAttributeData.GetAttrIndex(variableName.Substring(3,100));
+        int attrIndex = this.dayAttributeData.GetAttrIndex(variableName.Substring(3, variableName.Length - 3));
         //确认获取的index
         Debug.Log(attrIndex);
 

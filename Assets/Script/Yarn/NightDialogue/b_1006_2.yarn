@@ -12,9 +12,9 @@ position: -14,-45
 ---		
 <<set $b_expression to 20>>		
 夜没法和昼一起玩，宅在家画画看书。	
-夜参加了实验小学入学考试。			
+夜参加了实验小学入学考试。
+<<b_roll Calculate $b_expression $b6_test>>				
 考试结果……（检定 表达）
-<<b_roll Calculate $b_expression $b6_test>>	
 <<if $b6_test == 1>>
     进入优等班。
 <<else>>
