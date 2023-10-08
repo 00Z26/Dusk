@@ -68,13 +68,13 @@ using Yarn.Unity;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            InvokeOptionSelected();
+            //InvokeOptionSelected();
         }
 
-        // If we mouse-over, we're telling the UI system that this element is
-        // the currently 'selected' (i.e. focused) element. 
-        public override void OnPointerEnter(PointerEventData eventData)
-        {
-            base.Select();
-        }
+    // If we mouse-over, we're telling the UI system that this element is
+    // the currently 'selected' (i.e. focused) element. 
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        //base.Select();
     }
+}

@@ -140,13 +140,13 @@ public class CustomVariableStorage : VariableStorageBehaviour
     private int GetAttributeNum(string variableName)
     {
         //float值 获取人物属性
-        string roleName = variableName.Substring(1);
+        string roleName = variableName.Substring(0,2);
         int res = -1;
         //int attrIndex = this.calculateManager.VariableToAttrIndex(variableName);
 
         int attrIndex = this.dayAttributeData.GetAttrIndex(variableName.Substring(3, variableName.Length - 3));
         //确认获取的index
-        Debug.Log(attrIndex);
+        
 
         if (dayAttributeData.attribute[attrIndex] != -1 || nightAttributeData.attribute[attrIndex] != -1)
         {
@@ -160,6 +160,7 @@ public class CustomVariableStorage : VariableStorageBehaviour
             }
             return res;
         }
+        Debug.Log(res);
         return res;
     }
     private void SetAttributeNum(string variableName, float val)

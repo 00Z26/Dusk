@@ -1,0 +1,122 @@
+title: b5_Start
+position: -24,-415
+---
+我是夜！
+现在我5岁！
+下一句就六岁了！
+<<jump b6_Start>>
+===
+
+title: b6_Start
+position: -10,-220
+---		
+<<set $b_expression to 20>>		
+夜没法和昼一起玩，宅在家画画看书。	
+夜参加了实验小学入学考试。	
+<<b_roll Calculate $b_expression $b6_test>>		
+考试结果……（检定 表达）
+<<if $b6_test == 1>>
+    进入优等班。
+<<else>>
+    进入普通班。
+<<endif>>			
+夜成为了一年级的小学生。			
+<<if $b6_test ==1>>			
+	和昼当同桌。		
+	<<wish Calculate>>
+	能一直和昼当同桌。		
+	<<jump b7_Desk>>		
+<<else>>			
+	不太愿意让昼天天跑来找自己，觉得丢脸。		
+	<<wish Calculate>>
+	想和昼一个班。		
+	<<jump b7_Class>>		
+<<endif>>
+===		
+
+title: b7_Desk
+position: -118,2
+---
+<<set $b_candor to 40>>	
+<<declare $b7_other = 0>>		
+老师要求换同桌，但夜和其他人都不熟。		
+夜心想……				
+->	好麻烦，不想换。			
+->	或许这是一个认识其他人的机会？
+    <<set $b7_other to 1>>
+->	要不问问昼是怎么想的？
+    <<set $b_candor = $b_candor + 5>>
+				
+<<if $a7_desk ==1>>
+	听说昼找了老师，吓得忘记之前在想啥了。			
+<<elseif $a7_desk ==2>>				
+	听到昼的表白，吓得忘记之前在想啥了。			
+<<else>>				
+	听到昼的想法后被吓得只能附和她。			
+<<endif>>				
+				
+夜本来有点尴尬，但被感染得也悄悄哭了。				
+夜的新同桌是个男的，嬉皮笑脸地凑过来说“这都能哭啊？”被夜吼回去以后“好凶啊。”				
+				
+<<if $b7_other == 0>>				
+	夜也有学有样，觉得叛逆的感觉还挺好。最后两人被忍无可忍的老师制裁了。			
+	觉得昼故意忽视妹妹不太好，有时也会去昼的座位上，聊天的时候带上妹妹。			
+	<<wish Calculate>>			
+	希望昼和妹妹关系变好一点，当然不要超过自己。			
+<<else>>				
+	夜觉得不守规矩不太好，故意和男的说话把她晾着。最后妹妹把昼找回去了。			
+	发现昼和妹妹关系变好，很不开心，但也没说什么。
+    <<set $b_candor = $b_candor - 5>>	
+	<<wish Calculate>>			
+	想和昼同桌，妹妹好碍眼。			
+<<endif>>				
+===		
+
+title: b7_Class
+position: 127,1
+---					
+听说优等班更好，而且昼也在那，想转去优等班。					
+夜决定……					
+->	带上自己三百分的考卷去找班主任谈判。
+    <<set $b_expression = $b_expression + 10>>	
+	班主任觉得夜很上进，帮她整理了一下逻辑，带她去见年级主任。
+    <<set $b_expression = $b_expression + 10>>			
+->	给家长写信拜托家长帮自己转班。
+    <<set $b_expression = $b_expression + 10>>				
+	家长带着礼物和夜去找年级主任，去前叮嘱她好好准备想说的话。	
+    <<set $b_expression = $b_expression + 10>>		
+->	觉得这些办法都不好，还是等等看别的机会吧。				
+	期中考试成绩出来以后，年级主任在找人谈话，感觉可以趁机说自己想转班。				
+
+<<b_roll Calculate $b_expression $b7_talk>>						
+谈话结果……（检定 表达）
+<<if $b6_talk == 1>>
+    进入优等班。
+<<else>>
+    留在普通班。
+<<endif>>	
+					
+<<if $a7_talk == 0 && $b7_talk == 1>>
+    <<set $b_candor to 40>>	
+	因为昼想转普通班而骂了她一通，心里其实很高兴。	
+	<<wish Calculate>>				
+	希望在新班级能适应，希望昼和自己的学习成绩都好。				
+	<<jump a8_Start>>				
+<<elseif $a7_talk == 1 && $b7_talk == 1>>					
+	告诉昼自己转去优等班了，然后昼也哭了。				
+	<<wish Calculate>>				
+	想让昼也回优等班。				
+	<<jump b8_be1>>				
+<<elseif $a7_talk == 1 && $b7_talk == 0>>					
+	虽然很高兴又能和昼同班了，但感觉有点心虚，觉得昼有点不值得。				
+	<<wish Calculate>>				
+	希望能考年级第一，让年级主任后悔。希望昼也能跟着自己好好学习。				
+	<<jump b8_be2>>				
+<<else>>	
+    <<set $b_candor to 30>>	
+	没能转班成功，感觉自己像小丑，没脸见昼了。		
+	<<wish Calculate>>				
+	希望昼永远也别知道自己转班失败。希望成绩能更好。				
+	<<jump a8_be3>>				
+<<endif>>					
+===					
