@@ -27,6 +27,8 @@ using Yarn.Unity;
         // The line we saw most recently.
         LocalizedLine lastSeenLine;
 
+        public int selectedId = -1;
+
         //public void Start()
         //{
         //    canvasGroup.alpha = 0;
@@ -114,7 +116,7 @@ using Yarn.Unity;
             /// Creates and configures a new <see cref="OptionView"/>, and adds
             /// it to <see cref="optionViews"/>.
             /// </summary>
-            ChoiceView CreateNewOptionView()
+             ChoiceView CreateNewOptionView()
             {
                 var optionView = Instantiate(optionViewPrefab);
                 optionView.transform.SetParent(transform, false);
@@ -131,15 +133,15 @@ using Yarn.Unity;
             /// </summary>
             void OptionViewWasSelected(DialogueOption option)
             {
-                //此处获取了返回的ID并执行了，在choiceview返回值前，将值传到计算，再传回这里。
-                //调用这个就会进图下一句
-                
-
-                OnOptionSelected(option.DialogueOptionID);
-            foreach (var optionView in optionViews)
-            {
-                optionView.gameObject.SetActive(false);
-            }
+            //此处获取了返回的ID并执行了，在choiceview返回值前，将值传到计算，再传回这里。
+            //调用这个就会进图下一句
+                selectedId = option.DialogueOptionID;
+                Debug.Log(option.DialogueOptionID);
+            //    OnOptionSelected(option.DialogueOptionID);
+            //foreach (var optionView in optionViews)
+            //{
+            //    optionView.gameObject.SetActive(false);
+            //}
             //StartCoroutine(OptionViewWasSelectedInternal(option));
 
             //IEnumerator OptionViewWasSelectedInternal(DialogueOption selectedOption)
@@ -149,12 +151,20 @@ using Yarn.Unity;
             //}
         }
         }
+    public void subimtChoice()
+    {
+        OnOptionSelected(selectedId);
+        foreach (var optionView in optionViews)
+        {
+            optionView.gameObject.SetActive(false);
+        }
+    }
 
     /// <inheritdoc />
     /// <remarks>
     /// If options are still shown dismisses them.
     /// </remarks>
-        public override void DialogueComplete()
+    public override void DialogueComplete()
         {
             StopAllCoroutines();
             lastSeenLine = null;

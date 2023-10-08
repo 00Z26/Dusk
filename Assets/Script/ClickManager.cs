@@ -20,6 +20,20 @@ public class ClickManager : MonoBehaviour
     public string nightDiceAttr;
     public string nightVariableName;
 
+    public ChoiceListView dayChoiceList;
+    public ChoiceListView nightChoiceList;
+    public GameObject choiceButton;
+
+    private void Update()
+    {
+        GameObject ts = GameObject.FindGameObjectWithTag("Choice");
+        if (ts != null)
+        {
+            choiceButton.gameObject.SetActive(true);
+        }
+    }
+
+
     [YarnCommand("wish")]
     public void ClickWish()
     {
@@ -46,5 +60,16 @@ public class ClickManager : MonoBehaviour
         nightVariableName = variable;
         dayDialogue.GetComponent<Button>().enabled = false;
         nightDialogue.GetComponent<Button>().enabled = false;
+    }
+
+    public void clickSubmitChoice()
+    {
+        if(dayChoiceList.selectedId != -1 && nightChoiceList.selectedId != -1)
+        {
+            dayChoiceList.subimtChoice();
+            nightChoiceList.subimtChoice();
+            choiceButton.SetActive(false);
+        }
+
     }
 }

@@ -62,13 +62,14 @@ using Yarn.Unity;
             {   
                 //此处返回的Option，在传入invoke前对Option的ID进行重新处理，来确定下一句的值
                 OnOptionSelected.Invoke(Option);
-                hasSubmittedOptionSelection = true;
+                //hasSubmittedOptionSelection = true;
             }
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            //InvokeOptionSelected();
+        Debug.Log(Option.DialogueOptionID);
+        InvokeOptionSelected();
         }
 
     // If we mouse-over, we're telling the UI system that this element is

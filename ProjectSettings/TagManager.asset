@@ -6,6 +6,7 @@ TagManager:
   tags:
   - dice
   - dialogue
+  - Choice
   layers:
   - Default
   - TransparentFX
