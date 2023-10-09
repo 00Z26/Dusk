@@ -10,6 +10,9 @@ public class AttributeShow : MonoBehaviour
     public TextMeshProUGUI dayAttrShow;
     public TextMeshProUGUI nightAttrShow;
 
+    public List<TextMeshProUGUI> dayAttrShowList;
+    public List<TextMeshProUGUI> nightAttrShowList;
+
 
 
     private void Update()
@@ -18,26 +21,28 @@ public class AttributeShow : MonoBehaviour
     }
     public void showAttr()
     {
-        string dayText = "day:\n\n";
-        string nightText = "night:\n\n";
+        //string dayText = "day:\n\n";
+        //string nightText = "night:\n\n";
 
-        for(int i = 0;i < dayAttribute.attribute.Count;i++)
+        //dayAttribute.attribute[0]
+        for (int i = 0;i < dayAttribute.attribute.Count;i++)
         {
             if(dayAttribute.attribute[i] != -1 && dayAttribute.attribute[i] != 0)
             {
-               dayText = dayText + dayAttribute.GetAttrName(i) + ":" + dayAttribute.attribute[i] + "\n\n\n";
+                dayAttrShowList[i].transform.parent.gameObject.SetActive(true);
+                dayAttrShowList[i].text = dayAttribute.attribute[i].ToString();
+               //dayText = dayText + dayAttribute.GetAttrName(i) + ":" + dayAttribute.attribute[i] + "\n\n\n";
             }
         }
         for (int i = 0; i < nightAttribute.attribute.Count; i++)
         {
             if (nightAttribute.attribute[i] != -1 && nightAttribute.attribute[i] != 0)
             {
-                nightText = nightText + nightAttribute.GetAttrName(i) + ":" + nightAttribute.attribute[i] + "\n\n\n";
+                nightAttrShowList[i].transform.parent.gameObject.SetActive(true);
+                nightAttrShowList[i].text = nightAttribute.attribute[i].ToString();
+                //nightText = nightText + nightAttribute.GetAttrName(i) + ":" + nightAttribute.attribute[i] + "\n\n\n";
             }
         }
-
-        dayAttrShow.text = dayText;
-        nightAttrShow.text = nightText;
     }
 
 }
