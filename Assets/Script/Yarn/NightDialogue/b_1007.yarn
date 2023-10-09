@@ -90,7 +90,7 @@ position: 127,1
 
 <<b_roll Calculate $b_expression $b7_talk>>						
 谈话结果……（检定 表达）
-<<if $b6_talk == 1>>
+<<if $b7_talk == 1>>
     进入优等班。
 <<else>>
     留在普通班。
