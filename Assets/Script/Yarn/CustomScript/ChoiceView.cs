@@ -9,6 +9,7 @@ using Yarn.Unity;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] bool showCharacterName = false;
 
+    public TextMeshProUGUI choiceText;
         public Action<DialogueOption> OnOptionSelected;
 
         DialogueOption _option;
@@ -33,7 +34,7 @@ using Yarn.Unity;
                 }
                 else
                 {
-                    text.text = value.Line.TextWithoutCharacterName.Text;
+                    choiceText.text = value.Line.TextWithoutCharacterName.Text;
                 }
                 interactable = value.IsAvailable;
             }
