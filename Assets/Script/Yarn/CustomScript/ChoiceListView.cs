@@ -27,6 +27,7 @@ public class ChoiceListView : DialogueViewBase
     // The line we saw most recently.
     LocalizedLine lastSeenLine;
 
+    public GameObject recordObject;
     public int selectedId = -1;
     public int lastId = -1;
 

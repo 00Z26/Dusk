@@ -43,6 +43,8 @@ public class DialogueView : DialogueViewBase
     [SerializeField] internal GameObject continueButton = null;
     
     public string historyRecord;
+    public GameObject recordObject;
+
     // The current coroutine that's playing out a scaling animation. When this
     // is not null, we're in the middle of an animation.
     // ¶¯»­
@@ -211,7 +213,8 @@ public class DialogueView : DialogueViewBase
         // there's nothing we can do to be faster, so we'll do nothing here.
         advanceHandler = null;
         text.text = dialogueLine.Text.Text;
-        historyRecord = dialogueLine.Text.Text;
+        //historyRecord = dialogueLine.Text.Text;
+        recordObject.GetComponent<InGameOperate>().AddRecord(this.gameObject.name, dialogueLine.Text.Text);
         Debug.Log(dialogueLine.Text.Text);
         Debug.Log($"{this.name} was interrupted while presenting {dialogueLine.TextID}");
 
