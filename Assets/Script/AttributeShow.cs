@@ -30,7 +30,7 @@ public class AttributeShow : MonoBehaviour
             if(dayAttribute.attribute[i] != -1 && dayAttribute.attribute[i] != 0)
             {
                 dayAttrShowList[i].transform.parent.gameObject.SetActive(true);
-                dayAttrShowList[i].text = dayAttribute.attribute[i].ToString();
+                dayAttrShowList[i].text = dayAttribute.attribute[i] <= 99 ? dayAttribute.attribute[i].ToString() : "99";
                //dayText = dayText + dayAttribute.GetAttrName(i) + ":" + dayAttribute.attribute[i] + "\n\n\n";
             }
         }
@@ -39,7 +39,7 @@ public class AttributeShow : MonoBehaviour
             if (nightAttribute.attribute[i] != -1 && nightAttribute.attribute[i] != 0)
             {
                 nightAttrShowList[i].transform.parent.gameObject.SetActive(true);
-                nightAttrShowList[i].text = nightAttribute.attribute[i].ToString();
+                nightAttrShowList[i].text = nightAttribute.attribute[i] <=99 ? nightAttribute.attribute[i].ToString() : "99";
                 //nightText = nightText + nightAttribute.GetAttrName(i) + ":" + nightAttribute.attribute[i] + "\n\n\n";
             }
         }

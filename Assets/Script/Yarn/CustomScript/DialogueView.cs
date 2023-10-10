@@ -96,7 +96,7 @@ public class DialogueView : DialogueViewBase
         // Start displaying the line: set our scale to zero, and update our
         // text.
         //Scale = 0;
-        string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(3);
+        string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(this.gameObject.name);
         text.text = logText + dialogueLine.Text.Text;
 
         // During presentation, if we get an advance signal, we'll indicate that

@@ -33,28 +33,44 @@ public class InGameOperate : MonoBehaviour
     {
         foreach (string content in dayContent)
         {
-            nightLog.text = nightLog.text + content;
+            nightLog.text = nightLog.text + content + "\n";
         }
     }
 
-    public string ShowMultiDialogue(int num)
+    public string ShowMultiDialogue(string name)
     {
         string dialogueText = "";
 
-        if(dayContent.Count >= 3)
+        if (dayContent.Count >= 3 || nightContent.Count >=3)
         {
-            //List<string> list = new List<string>();
-            List<string> list = dayContent.GetRange(dayContent.Count - 2, 2);
-            //list.Add(dayContent[^1]);
-            //list.Add(dayContent[^2]);
+            List<string> list = new List<string>();
+            if (name == "DayDialogue")
 
+                list = dayContent.GetRange(dayContent.Count - 2, 2);
+
+            else if (name == "NightDialogue")
+
+                list = nightContent.GetRange(dayContent.Count - 2, 2);
+          
             foreach (string content in list)
             {
-                dialogueText = dialogueText + content + "\n\n\n";
+                dialogueText = dialogueText + content + "\n\n";
             }
-        } else if(dayContent.Count == 2)
+
+        } 
+        else if(dayContent.Count == 2 || nightContent.Count == 2)
         {
-            dialogueText = dayContent[1];
+            if (name == "DayDialogue")
+            {
+
+                dialogueText = dayContent[1];
+
+            }
+            else if (name == "NightDialogue")
+            {
+                dialogueText = nightContent[1];
+
+            }
         }
         return dialogueText;
     }

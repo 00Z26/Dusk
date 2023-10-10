@@ -33,11 +33,21 @@ public class Dice : MonoBehaviour
         dayNum = int.Parse(leftNum.ToString() + rightNum.ToString());
         //夜的点数
         nightNum = int.Parse(rightNum.ToString() + leftNum.ToString());
+        Debug.Log(dayNum);
+        Debug.Log(nightNum);
 
-        dayDiceNum.text = leftNum.ToString() + rightNum.ToString();
-        nightDiceNum.text = rightNum.ToString() + leftNum.ToString();
 
-        calculateManager.CalculateDiceResult(dayNum,nightNum);
+        if (dayNum < nightNum)
+        {
+            int temp = dayNum;
+            dayNum = nightNum;
+            nightNum = temp;
+        }
+
+        dayDiceNum.text = dayNum.ToString();
+        nightDiceNum.text = nightNum.ToString();
+        
+        calculateManager.CalculateDiceResult(dayNum,nightNum,dayDiceNum,nightDiceNum);
         //这里计算结束后同样要调用下一句
         dayDiceNum.gameObject.transform.parent.gameObject.SetActive(true);
         nightDiceNum.gameObject.transform.parent.gameObject.SetActive(true);

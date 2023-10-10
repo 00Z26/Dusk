@@ -16,6 +16,7 @@ public class BranchData : ScriptableObject
     public int a9_trust;
     public int a9_mhonest;
     public int m9_trust;
+    public int a9_choco;
     public int a10_confess;
     public int a10_settle;
     public int a10_care;
