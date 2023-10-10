@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f3ac7b43a20cf4ab61d933e12fccb3, type: 3}
   m_Name: BranchData
   m_EditorClassIdentifier: 
-  a6_test: 0
-  a7_desk: 0
+  a6_test: 1
+  a7_desk: 3
   a7_talk: 0
   a8_lecture: 0
   leader: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   a10_msettle: 0
   a10_mcare: 0
   b10_mconfide: 0
-  b6_test: 0
+  b6_test: 1
   b7_other: 0
   b7_talk: 0
   b8_lecture: 0

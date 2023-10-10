@@ -96,7 +96,8 @@ public class DialogueView : DialogueViewBase
         // Start displaying the line: set our scale to zero, and update our
         // text.
         //Scale = 0;
-        text.text = dialogueLine.Text.Text;
+        string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(3);
+        text.text = logText + dialogueLine.Text.Text;
 
         // During presentation, if we get an advance signal, we'll indicate that
         // we want to interrupt.
@@ -212,8 +213,12 @@ public class DialogueView : DialogueViewBase
         // In this case, if we get another advance signal while this is going,
         // there's nothing we can do to be faster, so we'll do nothing here.
         advanceHandler = null;
+
+        //string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(3);
+        //展示对话
         text.text = dialogueLine.Text.Text;
         //historyRecord = dialogueLine.Text.Text;
+        //记录已经展示过的对话
         recordObject.GetComponent<InGameOperate>().AddRecord(this.gameObject.name, dialogueLine.Text.Text);
         Debug.Log(dialogueLine.Text.Text);
         Debug.Log($"{this.name} was interrupted while presenting {dialogueLine.TextID}");

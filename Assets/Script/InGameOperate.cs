@@ -36,4 +36,26 @@ public class InGameOperate : MonoBehaviour
             nightLog.text = nightLog.text + content;
         }
     }
+
+    public string ShowMultiDialogue(int num)
+    {
+        string dialogueText = "";
+
+        if(dayContent.Count >= 3)
+        {
+            //List<string> list = new List<string>();
+            List<string> list = dayContent.GetRange(dayContent.Count - 2, 2);
+            //list.Add(dayContent[^1]);
+            //list.Add(dayContent[^2]);
+
+            foreach (string content in list)
+            {
+                dialogueText = dialogueText + content + "\n\n\n";
+            }
+        } else if(dayContent.Count == 2)
+        {
+            dialogueText = dayContent[1];
+        }
+        return dialogueText;
+    }
 }
