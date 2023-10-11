@@ -41,7 +41,7 @@ public class InGameOperate : MonoBehaviour
     {
         string dialogueText = "\n";
 
-        if (dayContent.Count >= 2 || nightContent.Count >=2)
+        if (dayContent.Count >= 2 || nightContent.Count >2)
         {
             List<string> list = new List<string>();
             if (name == "DayDialogue")

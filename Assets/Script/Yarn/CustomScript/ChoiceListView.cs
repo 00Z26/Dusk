@@ -28,16 +28,15 @@ public class ChoiceListView : DialogueViewBase
     LocalizedLine lastSeenLine;
 
     public GameObject recordObject;
-    public int selectedId = -1;
-    public int lastId = -1;
+    public int selectedId ;
+    public int lastId ;
     public DialogueOption selectedOption;
 
-    //public void Start()
-    //{
-    //    canvasGroup.alpha = 0;
-    //    canvasGroup.interactable = false;
-    //    canvasGroup.blocksRaycasts = false;
-    //}
+    public void Start()
+    {
+        selectedId = -1;
+        lastId = -1;
+    }
 
     //public void Reset()
     //{
@@ -139,7 +138,6 @@ public class ChoiceListView : DialogueViewBase
             //调用这个就会进图下一句
             selectedId = option.DialogueOptionID;
             selectedOption = option;
-            Debug.Log(option.DialogueOptionID);
             
             if(lastId != selectedId)
             {   if(lastId != -1)

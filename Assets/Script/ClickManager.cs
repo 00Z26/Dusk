@@ -65,6 +65,7 @@ public class ClickManager : MonoBehaviour
 
     public void clickSubmitChoice()
     {
+        Debug.Log(dayChoiceList.selectedId);
         if (dayChoiceList.selectedId != -1 && nightChoiceList.selectedId != -1)
         {
 
