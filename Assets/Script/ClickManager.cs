@@ -23,6 +23,7 @@ public class ClickManager : MonoBehaviour
     public ChoiceListView dayChoiceList;
     public ChoiceListView nightChoiceList;
     public GameObject choiceButton;
+    public InGameOperate inGameOperator;
 
     private void Update()
     {
@@ -64,8 +65,15 @@ public class ClickManager : MonoBehaviour
 
     public void clickSubmitChoice()
     {
-        if(dayChoiceList.selectedId != -1 && nightChoiceList.selectedId != -1)
+        if (dayChoiceList.selectedId != -1 && nightChoiceList.selectedId != -1)
         {
+
+            //记录选项内容
+            inGameOperator.AddRecord("DayDialogue", dayChoiceList.selectedOption.Line.Text.Text);
+            inGameOperator.AddRecord("NightDialogue", nightChoiceList.selectedOption.Line.Text.Text);
+
+            //点击触发下一句
+
             dayChoiceList.subimtChoice();
             nightChoiceList.subimtChoice();
             choiceButton.SetActive(false);

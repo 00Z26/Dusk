@@ -1,0 +1,122 @@
+title: a5_Start
+position: -1,-388
+---
+我是昼！
+现在我5岁！
+下一句就六岁了！
+<<jump a6_Start>>
+===
+
+title: a6_Start
+position: 1,-198
+---	
+<<set $a_expression to 50>>	
+昼妈意外骨折，躺家里喊昼跑腿。昼没法和夜一起玩。
+昼参加了实验小学入学考试。
+<<a_roll Calculate $a_expression $a6_test>>
+考试结果……（检定 表达）
+<<if $a6_test == 1>>
+    进入优等班。
+<<else>>
+    没能考进优等班，但花钱进了。
+<<endif>>	
+昼成为了一年级的小学生。
+<<if $b6_test == 1>>		
+	和夜当同桌。	
+	<<wish Calculate>>
+	能一直和夜当同桌。	
+	<<jump a7_Desk>>	
+<<else>>		
+	天天下课跑去和夜玩，普通班的老师都认识昼了。	
+	<<wish Calculate>>
+	想和夜一个班。	
+	<<jump a7_Class>>	
+<<endif>>		
+===		
+
+title: a7_Desk
+position: -88,-1
+---	
+<<background Calculate $a_test>>
+<<set $a_candor to 50>>	
+<<declare $a7_desk = 0>>	
+老师宣布换同桌，但昼觉得别的小朋友都没有夜好。		
+昼决定……					
+->	跑去找老师说我不要换同桌。
+	<<set $a_candor = $a_candor + 5>>				
+	<<set $a7_desk to 1>>	
+->	向全班宣布我只跟夜做同桌，其他人谁来我揍谁。
+	<<set $a_candor = $a_candor + 5>>				
+	<<set $a7_desk to 2>>	
+->	问问夜是怎么想的。
+	<<set $a_candor = $a_candor + 10>>			
+	<<set $a7_desk to 3>>	
+						
+<<if $a7_desk ==1>>						
+	被老师教育了一顿。					
+<<elseif $a7_desk ==2>>						
+	趁课间站上讲台对夜激情表白。
+	<<set $a_expression = $a_expression + 5>>					
+<<else>>						
+	问夜怎么想的，夜还没来得及说话就先激情表白。
+<<endif>>					
+												
+结果老师还是强行把昼夜分开了，换位置的时候昼哇哇大哭。						
+昼的新同桌是个胆小妹妹，害怕地给昼递纸巾，被昼狠狠推了回去，然后妹妹也哭了。						
+之后，昼一直给妹妹耍冷脸，有课堂双人合作的时候也故意把她丢下去找夜。						
+						
+<<if $b7_other == 0>>						
+	被制裁以后消停了，但还是一下课就去找夜玩，每次都霸占男的的位置。					
+<<else>>						
+	昼被男的气死了，赌气也去找妹妹说话，意外地发现妹妹人不错。于是心情又好了起来。					
+<<endif>>						
+						
+<<wish Calculate>>						
+还是想和夜同桌，希望男的去死。
+===	
+
+title: a7_Class
+position: 169,2
+---	
+<<background Calculate $a_test>>
+觉得身边的小朋友都没有夜好，想转去和夜一个班。					
+昼决定……					
+->	找班主任宣布自己要转班。				
+	被班主任劝了一通，最终松口让昼去找年级主任谈。				
+->	找昼妈撒娇说自己要转班。				
+	被昼妈狠批了一顿，只能找别的办法了。刚好年级主任在找她谈话。				
+->	期中考试故意交白卷。				
+	果不其然考了倒一。年级主任找自己谈话。				
+
+<<a_roll Calculate $a_expression $a7_talk>>					
+谈话结果……（检定 表达）
+<<if $a7_talk == 1>>
+    进入普通班。
+<<else>>
+    留在优等班。
+<<endif>>	
+					
+<<if $a7_talk == 0 && $b7_talk == 1>>
+	<<set $a_candor to 50>>				
+	听说夜成功转班以后狂喜乱舞，把之前的努力当笑话给夜讲。		
+	<<wish Calculate>>				
+	下一个目标是和夜当同桌，年级主任会管谁和谁当同桌吗？				
+			
+<<elseif $a7_talk == 1 && $b7_talk == 1>>					
+	美滋滋地去找夜，告诉自己转去普通班了，却看见夜突然急了，边哭边骂她。				
+	<<wish Calculate>>				
+	想回优等班，希望我妈别生我气了。				
+		
+<<elseif $a7_talk == 1 && $b7_talk == 0>>					
+	美滋滋地去找夜，告诉自己转去普通班了，夜眼睛瞪得像铜铃。				
+	<<wish Calculate>>				
+	希望能一直和夜一个班，希望我妈别生我气了。				
+		
+<<else>>	
+	<<set $a_candor to 40>>					
+	没能转班成功，感觉自己像小丑，没脸见夜了。		
+	<<wish Calculate>>				
+	还能想办法转班吗？				
+	
+<<endif>>		
+===					

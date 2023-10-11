@@ -37,7 +37,7 @@ public class Dice : MonoBehaviour
         Debug.Log(nightNum);
 
 
-        if (dayNum < nightNum)
+        if (dayNum > nightNum)
         {
             int temp = dayNum;
             dayNum = nightNum;

@@ -10,20 +10,26 @@ public class ChangeImage : MonoBehaviour
     public GameObject nightScreen;
     public GameObject dayBubble;
     public GameObject nightBubble;
+    public Image endShow;
 
-    private string screenPath = "dialogue/";
+    private string screenPath = "img/title/";
     private string bubblePath = "dialogue/";
+    private string endPicPath = "img/end/";
 
     [YarnCommand("background")]
     public void ChangeTitleImage(string imageName)
     {
-        Sprite tmp = Resources.Load(screenPath + imageName.Substring(1)) as Sprite;
-        if (imageName.Substring(0, 2) == "$a")
+        string path = screenPath + imageName.Substring(1);
+
+        Texture2D tmp2D = Resources.Load(path) as Texture2D;
+        Sprite tmp = Sprite.Create(tmp2D, new Rect(0, 0, tmp2D.width, tmp2D.height), new Vector2(0.5f, 0.5f));
+
+        if (imageName.Substring(0 , 2) == "$a")
         {
-            dayScreen.GetComponent<Image>().sprite = tmp ;
-        }else if (imageName.Substring(0, 2) == "$b")
+            dayScreen.GetComponent<SpriteRenderer>().sprite = tmp ;
+        }else if (imageName.Substring(0 , 2) == "$b")
         {
-            nightScreen.GetComponent<Image>().sprite = tmp;
+            nightScreen.GetComponent<SpriteRenderer>().sprite = tmp;
 
         }
         Debug.Log("无对应变量");
@@ -32,7 +38,11 @@ public class ChangeImage : MonoBehaviour
     [YarnCommand("bubble")]
     public void ChangeBubbleImage(string bubbleName)
     {
-        Sprite tmp = Resources.Load(screenPath + bubbleName.Substring(1)) as Sprite;
+        string path = bubblePath + bubbleName.Substring(1);
+
+        Texture2D tmp2D = Resources.Load(path) as Texture2D;
+        Sprite tmp = Sprite.Create(tmp2D, new Rect(0, 0, tmp2D.width, tmp2D.height), new Vector2(0.5f, 0.5f));
+
         if (bubbleName.Substring(0, 2) == "$a")
         {
             dayBubble.GetComponent<Image>().sprite = tmp;
@@ -43,6 +53,17 @@ public class ChangeImage : MonoBehaviour
 
         }
         Debug.Log("无对应气泡");
+    }
+
+    [YarnCommand("end")]
+    public void ShowEndPic(string picName)
+    {
+        string path = endPicPath + picName.Substring(1);
+
+        Texture2D tmp2D = Resources.Load(path) as Texture2D;
+        Sprite tmp = Sprite.Create(tmp2D, new Rect(0, 0, tmp2D.width, tmp2D.height), new Vector2(0.5f, 0.5f));
+
+        endShow.sprite = tmp;
     }
 
 

@@ -30,6 +30,7 @@ public class ChoiceListView : DialogueViewBase
     public GameObject recordObject;
     public int selectedId = -1;
     public int lastId = -1;
+    public DialogueOption selectedOption;
 
     //public void Start()
     //{
@@ -137,6 +138,7 @@ public class ChoiceListView : DialogueViewBase
             //此处获取了返回的ID并执行了，在choiceview返回值前，将值传到计算，再传回这里。
             //调用这个就会进图下一句
             selectedId = option.DialogueOptionID;
+            selectedOption = option;
             Debug.Log(option.DialogueOptionID);
             
             if(lastId != selectedId)

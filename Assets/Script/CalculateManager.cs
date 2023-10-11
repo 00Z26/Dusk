@@ -17,7 +17,7 @@ public class CalculateManager : MonoBehaviour
         int dayResult = -1;
         int nightResult = -1;
         //´ý´¦Àí£ºÊôÐÔÅÐ¶Ï
-        if(dayAttrList.attribute[dayAttrList.GetAttrIndex(attribute.Substring(3, attribute.Length - 3))] > dayDiceNum)
+        if(dayAttrList.attribute[dayAttrList.GetAttrIndex(attribute.Substring(3, attribute.Length - 3))] >= dayDiceNum)
         {
             dayResult = 1;
             dayDiceText.color = Color.green;
@@ -27,7 +27,7 @@ public class CalculateManager : MonoBehaviour
             dayResult = 0;
             dayDiceText.color = Color.red;
         }
-        if (nightAttrList.attribute[nightAttrList.GetAttrIndex(attribute.Substring(3, attribute.Length - 3))] > nightDiceNum)
+        if (nightAttrList.attribute[nightAttrList.GetAttrIndex(attribute.Substring(3, attribute.Length - 3))] >= nightDiceNum)
         {
             nightResult = 1;
             nightDiceText.color = Color.green;

@@ -39,9 +39,9 @@ public class InGameOperate : MonoBehaviour
 
     public string ShowMultiDialogue(string name)
     {
-        string dialogueText = "";
+        string dialogueText = "\n";
 
-        if (dayContent.Count >= 3 || nightContent.Count >=3)
+        if (dayContent.Count >= 2 || nightContent.Count >=2)
         {
             List<string> list = new List<string>();
             if (name == "DayDialogue")
@@ -58,17 +58,17 @@ public class InGameOperate : MonoBehaviour
             }
 
         } 
-        else if(dayContent.Count == 2 || nightContent.Count == 2)
+        else if(dayContent.Count == 1 || nightContent.Count == 1)
         {
             if (name == "DayDialogue")
             {
 
-                dialogueText = dayContent[1];
+                dialogueText = dayContent[0]+"\n";
 
             }
             else if (name == "NightDialogue")
             {
-                dialogueText = nightContent[1];
+                dialogueText = nightContent[0]+"\n";
 
             }
         }
