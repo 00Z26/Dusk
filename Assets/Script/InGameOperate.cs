@@ -10,6 +10,15 @@ public class InGameOperate : MonoBehaviour
 
     public List<string> dayContent;
     public List<string> nightContent;
+
+    private RectTransform daySize;
+    private RectTransform nightSize;
+
+    private void Start()
+    {
+        daySize = dayLog.gameObject.GetComponent<RectTransform>();
+        nightSize = nightLog.gameObject.GetComponent<RectTransform>();
+    }
     public void AddRecord(string name,string text)
     {
         if(name == "DayDialogue")
@@ -19,21 +28,22 @@ public class InGameOperate : MonoBehaviour
         {
             nightContent.Add(text);
         }
-        Debug.Log(dayContent);
+        daySize.sizeDelta = new Vector2(0, daySize.sizeDelta.y + 40);
+        nightSize.sizeDelta = new Vector2(0, nightSize.sizeDelta.y + 40);
     }
 
     public void ShowDayHistory()
     {
         foreach(string content in dayContent)
         {
-            dayLog.text = dayLog.text + content + "\n";
+            dayLog.text = dayLog.text + content + "\n\n";
         }
     }
     public void ShownightHistory()
     {
         foreach (string content in dayContent)
         {
-            nightLog.text = nightLog.text + content + "\n";
+            nightLog.text = nightLog.text + content + "\n\n";
         }
     }
 
