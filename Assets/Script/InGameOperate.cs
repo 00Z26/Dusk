@@ -41,7 +41,7 @@ public class InGameOperate : MonoBehaviour
     }
     public void ShownightHistory()
     {
-        foreach (string content in dayContent)
+        foreach (string content in nightContent)
         {
             nightLog.text = nightLog.text + content + "\n\n";
         }
