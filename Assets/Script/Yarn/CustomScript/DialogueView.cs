@@ -30,7 +30,10 @@ public class DialogueView : DialogueViewBase
 
     // The text view to display the line of dialogue in.
     //显示文字的text
-    [SerializeField] TMPro.TextMeshProUGUI text;
+    [SerializeField] public TMPro.TextMeshProUGUI text;
+    //[SerializeField] TMPro.TextMeshProUGUI text2;
+    //[SerializeField] TMPro.TextMeshProUGUI text3;
+
 
     // The game object that should animate in and out.
     //控制动画
@@ -44,6 +47,8 @@ public class DialogueView : DialogueViewBase
     
     public string historyRecord;
     public GameObject recordObject;
+
+    public DialoguePage dialoguePage;
 
     // The current coroutine that's playing out a scaling animation. When this
     // is not null, we're in the middle of an animation.
@@ -96,12 +101,15 @@ public class DialogueView : DialogueViewBase
         // Start displaying the line: set our scale to zero, and update our
         // text.
         //Scale = 0;
-        string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(this.gameObject.name);
-        text.text = logText + dialogueLine.Text.Text;
+        //原本的展示三行的记录
+        //string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(this.gameObject.name);
+        //text.text = logText + dialogueLine.Text.Text;
+        text.text = dialogueLine.Text.Text;
+
 
         // During presentation, if we get an advance signal, we'll indicate that
         // we want to interrupt.
-        if(waitForInput)
+        if (waitForInput)
         {
             //点击后出现下一句
             advanceHandler = requestInterrupt;
@@ -220,6 +228,8 @@ public class DialogueView : DialogueViewBase
         //historyRecord = dialogueLine.Text.Text;
         //记录已经展示过的对话
         recordObject.GetComponent<InGameOperate>().AddRecord(this.gameObject.name, dialogueLine.Text.Text);
+        //三行一页，记录这一页的内容
+        //dialoguePage.AddDialogueList(dialogueLine.Text.Text);
         Debug.Log(dialogueLine.Text.Text);
         Debug.Log($"{this.name} was interrupted while presenting {dialogueLine.TextID}");
 
