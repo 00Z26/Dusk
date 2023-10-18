@@ -8,20 +8,22 @@ public class DialoguePage : MonoBehaviour
 {
     public GameObject dialogueObj;
     public List<TextMeshProUGUI> contentList;
-    //public TextMeshProUGUI content_1;
-    //public TextMeshProUGUI content_2;
-    //public TextMeshProUGUI content_3;
+
     private DialogueView dialogueView;
     private int contentIndex = 0;
-    //private List<string> showDialogueList = new List<string>();
+
     private void Awake()
     {
         dialogueView = dialogueObj.GetComponent<DialogueView>();
     }
 
     [YarnCommand("page")]
-    public void TurnPage()
+    public void TurnPage(int sentenceNum = 0)
     {
+        //对传值进行校验
+        //if (sentenceNum > 9)
+        //    sentenceNum = 9;
+
         contentIndex = 0;
         //showDialogueList.Clear();
         dialogueView.text = contentList[0];
@@ -30,8 +32,13 @@ public class DialoguePage : MonoBehaviour
             content.text = "";
         }
         contentIndex++;
-        //content_2.text = "";
-        //content_3.text = "";
+
+        //传值时，激活对应的文本框数
+        //for(int i = 0; i < sentenceNum; i++)
+        //{
+        //    contentList[i].gameObject.SetActive(true);
+        //}
+
     }
 
     public void InPageClick()
@@ -41,10 +48,15 @@ public class DialoguePage : MonoBehaviour
 
     }
 
+    public void InChoiceClick(string selectedChoice)
+    {
+        contentList[contentIndex].text = selectedChoice;
+        contentIndex++;
+        dialogueView.text = contentList[contentIndex];
+        contentIndex++;
 
-    //public void AddDialogueList(string content)
-    //{
-    //    showDialogueList.Add(content);
-    //}
+
+    }
+
 
 }

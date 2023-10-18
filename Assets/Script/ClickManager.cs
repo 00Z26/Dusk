@@ -25,6 +25,9 @@ public class ClickManager : MonoBehaviour
     public GameObject choiceButton;
     public InGameOperate inGameOperator;
 
+    public DialoguePage dayDialoguePage;
+    public DialoguePage nightDialoguePage;
+
     private void Update()
     {
         GameObject ts = GameObject.FindGameObjectWithTag("Choice");
@@ -73,8 +76,11 @@ public class ClickManager : MonoBehaviour
             inGameOperator.AddRecord("DayDialogue", dayChoiceList.selectedOption.Line.Text.Text);
             inGameOperator.AddRecord("NightDialogue", nightChoiceList.selectedOption.Line.Text.Text);
 
+            //页面显示已选的内容
+            dayDialoguePage.InChoiceClick(dayChoiceList.selectedOption.Line.Text.Text);
+            nightDialoguePage.InChoiceClick(nightChoiceList.selectedOption.Line.Text.Text);
+            
             //点击触发下一句
-
             dayChoiceList.subimtChoice();
             nightChoiceList.subimtChoice();
             choiceButton.SetActive(false);
