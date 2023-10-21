@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: DialogueAudioData
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: d6a9a9f9f008477478bf7473944351af, type: 3}
+  - {fileID: 8300000, guid: 25585dd3a921aec4e8139c1d5fb6cfa8, type: 3}
+  - {fileID: 8300000, guid: 12a1a628eb5897941a377fb72f3f0f54, type: 3}
+  - {fileID: 8300000, guid: 2ca49a4c1cafe924fae6965fba5cddfc, type: 3}
   titles:
-  - a6_Start
-  - a7_Desk
-  - a7_Class
-  - a8_be1
+  - a6_Start1
+  - a7_Desk1
+  - a7_Class1
+  - a8_Start1

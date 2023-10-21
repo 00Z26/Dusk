@@ -433,7 +433,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -542,6 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20857911dc88e72449a5da922f112a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueAudio: {fileID: 11400000, guid: 64902f5994dcc7a42a7ba1fa2ef223bc, type: 2}
+  audioSource: {fileID: 115012846}
 --- !u!1 &160623025
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class DialoguePage : MonoBehaviour
     private DialogueView dialogueView;
     private int contentIndex = 0;
 
+
     private void Awake()
     {
         dialogueView = dialogueObj.GetComponent<DialogueView>();
@@ -55,7 +56,12 @@ public class DialoguePage : MonoBehaviour
         dialogueView.text = contentList[contentIndex];
         contentIndex++;
 
+    }
 
+    private void OnPlayEffectAudio()
+    {
+        int mode = 1;
+        EventHandler.CallClickAudio(mode);
     }
 
 

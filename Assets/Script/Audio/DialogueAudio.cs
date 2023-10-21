@@ -1,24 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class DialogueAudio : MonoBehaviour
 {
+    public AudioData dialogueAudio;
+    public AudioSource audioSource;
     private string titleName;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+
+    //由设置背景图片的命令触发
+    public void SetDialogueAudio(string name) 
+    { 
+        titleName = name;
+        AudioClip dialogueClip = dialogueAudio.GetAudioClips(titleName);
+        if (dialogueClip != null)
+            audioSource.clip = dialogueClip;
+        audioSource.Play();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    [YarnCommand("pause")]
+    public void PauseDialogueAudio()
     {
-        
+        audioSource.Pause();
     }
 
-    //节点名称由设置背景图片的命令调用赋值
-    public void SetTitleName(string name) { titleName = name; }
+    [YarnCommand("continue")]
+    public void ContimueAudio()
+    {
+        audioSource.Play();
+    }
 
 
 }

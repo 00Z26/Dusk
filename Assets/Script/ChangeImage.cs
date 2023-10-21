@@ -44,7 +44,7 @@ public class ChangeImage : MonoBehaviour
         StartCoroutine(Change(imageName));
 
         //把图片节点的名称传给音乐设置
-        dialogueAudio.SetTitleName(imageName);
+        dialogueAudio.SetDialogueAudio(imageName.Substring(1));
         //string path = screenPath + imageName.Substring(1);
         //Color tmpDayColor = dayblackCanvas.color;
 

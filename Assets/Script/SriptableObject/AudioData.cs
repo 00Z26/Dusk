@@ -19,7 +19,7 @@ public class AudioData : ScriptableObject
         catch (Exception e)
         {
             //无对应，存在异常，不做其他更改
-            Debug.LogException(e);
+            Debug.Log(e);
             return null;
 
         }
