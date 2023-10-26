@@ -41,10 +41,11 @@ public class ChangeImage : MonoBehaviour
     [YarnCommand("background")]
     public void ChangeTitleImage(string imageName)
     {
-        StartCoroutine(Change(imageName));
-
         //把图片节点的名称传给音乐设置
         dialogueAudio.SetDialogueAudio(imageName.Substring(1));
+        StartCoroutine(Change(imageName));
+
+
         //string path = screenPath + imageName.Substring(1);
         //Color tmpDayColor = dayblackCanvas.color;
 

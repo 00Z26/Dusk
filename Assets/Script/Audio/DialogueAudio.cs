@@ -16,8 +16,11 @@ public class DialogueAudio : MonoBehaviour
         titleName = name;
         AudioClip dialogueClip = dialogueAudio.GetAudioClips(titleName);
         if (dialogueClip != null)
+        {
             audioSource.clip = dialogueClip;
-        audioSource.Play();
+            audioSource.Play();
+        }
+
         
     }
 
