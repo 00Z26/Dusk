@@ -164,6 +164,8 @@ public class ChoiceListView : DialogueViewBase
     public void subimtChoice()
     {
         OnOptionSelected(selectedId);
+        optionViews[selectedId].gameObject.GetComponent<Image>().enabled = false;
+        selectedId = -1;
         foreach (var optionView in optionViews)
         {
             optionView.gameObject.SetActive(false);
