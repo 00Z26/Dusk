@@ -2738,6 +2738,7 @@ MonoBehaviour:
   lastLineText: {fileID: 0}
   fadeTime: 0.1
   showUnavailableOptions: 1
+  dialogueView: {fileID: 402866639}
   recordObject: {fileID: 564076468}
   selectedId: 0
   lastId: -1
@@ -5018,6 +5019,7 @@ MonoBehaviour:
   lastLineText: {fileID: 0}
   fadeTime: 0.1
   showUnavailableOptions: 1
+  dialogueView: {fileID: 1577869832}
   recordObject: {fileID: 564076468}
   selectedId: 0
   lastId: -1

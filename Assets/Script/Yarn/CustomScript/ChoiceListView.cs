@@ -24,6 +24,8 @@ public class ChoiceListView : DialogueViewBase
     // The method we should call when an option has been selected.
     Action<int> OnOptionSelected;
 
+    public DialogueView dialogueView;
+
     // The line we saw most recently.
     LocalizedLine lastSeenLine;
 
@@ -66,6 +68,8 @@ public class ChoiceListView : DialogueViewBase
             var optionView = CreateNewOptionView();
             optionView.gameObject.SetActive(false);
         }
+
+        dialogueView.gameObject.GetComponent<Button>().enabled = false;
 
         // Set up all of the option views
         int optionViewsCreated = 0;
@@ -163,6 +167,7 @@ public class ChoiceListView : DialogueViewBase
     }
     public void subimtChoice()
     {
+        dialogueView.gameObject.GetComponent<Button>().enabled = true;
         OnOptionSelected(selectedId);
         optionViews[selectedId].gameObject.GetComponent<Image>().enabled = false;
         selectedId = -1;

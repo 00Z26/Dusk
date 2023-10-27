@@ -51,6 +51,7 @@ public class DialoguePage : MonoBehaviour
 
     public void InChoiceClick(string selectedChoice)
     {
+        contentIndex--;
         contentList[contentIndex].text = selectedChoice;
         contentIndex++;
         dialogueView.text = contentList[contentIndex];
@@ -64,5 +65,8 @@ public class DialoguePage : MonoBehaviour
         EventHandler.CallClickAudio(mode);
     }
 
-
+    public void ChangeIndex()
+    {
+        contentIndex--;
+    }
 }

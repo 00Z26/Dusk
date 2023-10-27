@@ -223,9 +223,14 @@ public class DialogueView : DialogueViewBase
         advanceHandler = null;
 
         //string logText = recordObject.GetComponent<InGameOperate>().ShowMultiDialogue(3);
-        //展示对话
-        text.text = dialogueLine.Text.Text;
+
+        //********展示对话  因为多显示选项去掉了注意*******
+        //********Run的时候展示，因为有效果，这里负责打断会整体再显示一下******
+        //text.text = dialogueLine.Text.Text + "4444";
+
+
         //historyRecord = dialogueLine.Text.Text;
+
         //记录已经展示过的对话
         recordObject.GetComponent<InGameOperate>().AddRecord(this.gameObject.name, dialogueLine.Text.Text);
         //三行一页，记录这一页的内容
