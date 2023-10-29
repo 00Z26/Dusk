@@ -69,4 +69,9 @@ public class DialoguePage : MonoBehaviour
     {
         contentIndex--;
     }
+
+    public int GetIndex()
+    {
+        return contentIndex;
+    }
 }

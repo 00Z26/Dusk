@@ -73,6 +73,7 @@ public class ChoiceListView : DialogueViewBase
 
         // Set up all of the option views
         int optionViewsCreated = 0;
+        this.gameObject.GetComponent<ChoicePos>().SetChoicePos();
 
         for (int i = 0; i < dialogueOptions.Length; i++)
         {
